@@ -1,0 +1,88 @@
+{
+  "name": "hash-anchor",
+  "displayName": "Hash Anchor",
+  "description": "List //#anchor markers from only the currently active editor file and jump to them.",
+  "version": "0.0.3",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:hashAnchor.lister",
+    "onCommand:hashAnchor.lister.keybind",
+    "onCommand:hashAnchor.refresh",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "hashAnchor.lister.keybind",
+        "title": "Hash Anchor: Open Current File Anchor List"
+      },
+      {
+        "command": "hashAnchor.refresh",
+        "title": "Hash Anchor: Refresh Anchors"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "hashAnchor",
+          "title": "Hash Anchor",
+          "icon": "resources/hash-anchor.svg"
+        }
+      ]
+    },
+    "views": {
+      "hashAnchor": [
+        {
+          "id": "hashAnchor.lister",
+          "name": "Anchors"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "hashAnchor.refresh",
+          "when": "view == hashAnchor.lister",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Hash Anchor",
+      "properties": {
+        "hashAnchor.anchorPrefix": {
+          "type": "string",
+          "default": "//#anchor",
+          "description": "Line prefix used to detect anchors. Only lines whose trimmed text starts with this prefix are listed."
+        },
+        "hashAnchor.largeLabel.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a semi-transparent large anchor label at each //#anchor line in the active editor."
+        },
+        "hashAnchor.largeLabel.prefix": {
+          "type": "string",
+          "default": "  # ",
+          "description": "Text prefix displayed before each large anchor label decoration."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.5"
+  }
+}
