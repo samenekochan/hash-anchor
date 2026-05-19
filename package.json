@@ -2,7 +2,7 @@
   "name": "hash-anchor",
   "displayName": "Hash Anchor",
   "description": "Simple current-file anchor navigator for VS Code.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "samenekochan",
   "icon": "resources/AHash.png",
   "repository": {
@@ -67,15 +67,102 @@
     "configuration": {
       "title": "Hash Anchor",
       "properties": {
-        "hashAnchor.anchorPrefix": {
+        "hashAnchor.mode": {
           "type": "string",
-          "default": "//#anchor",
-          "description": "Line prefix used to detect anchors. Only lines whose trimmed text starts with this prefix are listed."
+          "enum": [
+            "language",
+            "pattern",
+            "auto"
+          ],
+          "default": "auto",
+          "description": "Anchor detection and insertion mode. language uses languageId mappings, pattern uses configurable patterns and short comment-like prefixes, auto tries language then pattern then bare #anchor."
+        },
+        "hashAnchor.languagePatterns": {
+          "type": "object",
+          "default": {
+            "javascript": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "typescript": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "javascriptreact": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "typescriptreact": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "java": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "c": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "cpp": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "csharp": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "rust": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "go": "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "python": "^\\s*#\\s*anchor\\s*(.*?)\\s*$",
+            "shellscript": "^\\s*#\\s*anchor\\s*(.*?)\\s*$",
+            "ruby": "^\\s*#\\s*anchor\\s*(.*?)\\s*$",
+            "yaml": "^\\s*#\\s*anchor\\s*(.*?)\\s*$",
+            "html": "^\\s*<!--\\s*#anchor\\s*(.*?)\\s*-->\\s*$",
+            "xml": "^\\s*<!--\\s*#anchor\\s*(.*?)\\s*-->\\s*$",
+            "markdown": "^\\s*<!--\\s*#anchor\\s*(.*?)\\s*-->\\s*$",
+            "css": "^\\s*/\\*\\s*#anchor\\s*(.*?)\\s*\\*/\\s*$",
+            "scss": "^\\s*/\\*\\s*#anchor\\s*(.*?)\\s*\\*/\\s*$",
+            "less": "^\\s*/\\*\\s*#anchor\\s*(.*?)\\s*\\*/\\s*$",
+            "lua": "^\\s*--\\s*#anchor\\s*(.*?)\\s*$",
+            "sql": "^\\s*--\\s*#anchor\\s*(.*?)\\s*$",
+            "ini": "^\\s*;\\s*#anchor\\s*(.*?)\\s*$"
+          },
+          "description": "LanguageId to regex mapping for anchor detection. The first capture group is used as the anchor label."
+        },
+        "hashAnchor.languageSnippets": {
+          "type": "object",
+          "default": {
+            "javascript": "//#anchor ${1:}",
+            "typescript": "//#anchor ${1:}",
+            "javascriptreact": "//#anchor ${1:}",
+            "typescriptreact": "//#anchor ${1:}",
+            "java": "//#anchor ${1:}",
+            "c": "//#anchor ${1:}",
+            "cpp": "//#anchor ${1:}",
+            "csharp": "//#anchor ${1:}",
+            "rust": "//#anchor ${1:}",
+            "go": "//#anchor ${1:}",
+            "python": "#anchor ${1:}",
+            "shellscript": "#anchor ${1:}",
+            "ruby": "#anchor ${1:}",
+            "yaml": "#anchor ${1:}",
+            "html": "<!-- #anchor ${1:} -->",
+            "xml": "<!-- #anchor ${1:} -->",
+            "markdown": "<!-- #anchor ${1:} -->",
+            "css": "/* #anchor ${1:} */",
+            "scss": "/* #anchor ${1:} */",
+            "less": "/* #anchor ${1:} */",
+            "lua": "--#anchor ${1:}",
+            "sql": "--#anchor ${1:}",
+            "ini": ";#anchor ${1:}"
+          },
+          "description": "LanguageId to snippet template mapping used by #anchor completion."
+        },
+        "hashAnchor.patterns": {
+          "type": "array",
+          "default": [
+            "^\\s*//\\s*#anchor\\s*(.*?)\\s*$",
+            "^\\s*#\\s*anchor\\s*(.*?)\\s*$",
+            "^\\s*--\\s*#anchor\\s*(.*?)\\s*$",
+            "^\\s*;\\s*#anchor\\s*(.*?)\\s*$",
+            "^\\s*<!--\\s*#anchor\\s*(.*?)\\s*-->\\s*$",
+            "^\\s*/\\*\\s*#anchor\\s*(.*?)\\s*\\*/\\s*$"
+          ],
+          "description": "Regex patterns used in pattern mode. The first capture group is used as the anchor label."
+        },
+        "hashAnchor.pattern.limitPrefixLength.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Limit generic pattern matching to short symbol-only prefixes before #anchor."
+        },
+        "hashAnchor.pattern.maxPrefixLength": {
+          "type": "number",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 32,
+          "description": "Maximum number of symbol characters allowed before #anchor in generic pattern matching. Runtime is clamped to 1-32."
         },
         "hashAnchor.largeLabel.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Show a semi-transparent large anchor label at each //#anchor line in the active editor."
+          "description": "Show a semi-transparent large anchor label at each anchor line in the active editor."
         },
         "hashAnchor.largeLabel.prefix": {
           "type": "string",
