@@ -95,11 +95,16 @@ function createAnchorCompletionProvider(): vscode.CompletionItemProvider {
         return undefined;
       }
 
+      const fullPrefix = getPrefix();
+      const beforeHash = linePrefix.slice(0, hashIndex);
+      const alreadyHasLineComment = /\/\/\s*$/.test(beforeHash);
+      const insertPrefix = alreadyHasLineComment ? completionToken : fullPrefix;
+
       const item = new vscode.CompletionItem(completionToken, vscode.CompletionItemKind.Snippet);
       item.detail = 'Hash Anchor';
       item.documentation = new vscode.MarkdownString('Insert a Hash Anchor marker for the current file anchor list.');
       item.range = new vscode.Range(position.line, hashIndex, position.line, position.character);
-      item.insertText = new vscode.SnippetString(completionToken + ' ${1:anchor-name}');
+      item.insertText = new vscode.SnippetString(`${insertPrefix} \${1:}`);
       item.sortText = '0000_hash_anchor';
       item.filterText = completionToken;
       return [item];
