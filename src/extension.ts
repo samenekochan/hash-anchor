@@ -159,7 +159,7 @@ function getPatternMaxPrefixLength(): number {
     return 4;
   }
 
-  return Math.min(32, Math.max(1, Math.floor(value)));
+  return Math.min(16, Math.max(1, Math.floor(value)));
 }
 
 function updateAnchorDecorations(editor?: vscode.TextEditor): void {
