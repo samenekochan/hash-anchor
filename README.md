@@ -256,4 +256,3 @@ def setup():
 <sub><i>Navigate between anchors quickly using the sidebar and quick picker.</i></sub>
 
 
-
