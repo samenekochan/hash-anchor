@@ -2,7 +2,7 @@
   "name": "hash-anchor",
   "displayName": "Hash Anchor",
   "description": "Simple current-file anchor navigator for VS Code.",
-  "version": "0.0.5",
+  "version": "0.0.6-beta.1",
   "publisher": "samenekochan",
   "icon": "resources/AHash.png",
   "repository": {
