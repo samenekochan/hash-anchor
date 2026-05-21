@@ -253,6 +253,8 @@ def setup():
     pass
 ```
 
+---
+
 # Screenshots
 
 <img width="874" height="135" alt="image" src="https://github.com/user-attachments/assets/73c07a11-475f-48d6-91f0-b98cd8af6c03" /><br>
