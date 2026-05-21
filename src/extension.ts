@@ -96,8 +96,7 @@ function createAnchorDecorationType(): vscode.TextEditorDecorationType {
       color: 'rgba(127, 127, 127, 0.35)',
       fontWeight: '700',
       fontStyle: 'normal',
-      // textDecoration: 'none; font-size: 1.4em'
-      textDecoration: 'none; letter-spacing: 0.04em;'
+      textDecoration: 'none; display: inline-block; transform: scale(2); transform-origin: left center;'
     }
   });
 }
