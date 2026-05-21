@@ -135,8 +135,6 @@ Tries:
 2. pattern-based parsing
 3. bare `#anchor`
 
----
-
 ## Language Mode
 
 Uses configured language-specific anchor formats.
@@ -146,8 +144,6 @@ Example:
 ```json
 "javascript": "//#anchor ${1:}"
 ```
-
----
 
 ## Pattern Mode
 
@@ -168,8 +164,6 @@ hashAnchor.lister.keybind
 ```
 
 Opens a Quick Pick list of anchors from the current file.
-
----
 
 ## Refresh Anchors
 
@@ -211,8 +205,6 @@ Available values:
 * `auto`
 * `language`
 * `pattern`
-
----
 
 ## Pattern Prefix Limit
 
