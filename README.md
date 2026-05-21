@@ -252,3 +252,14 @@ function initialize() {
 def setup():
     pass
 ```
+
+# Screenshots
+
+<img width="874" height="135" alt="image" src="https://github.com/user-attachments/assets/73c07a11-475f-48d6-91f0-b98cd8af6c03" /><br>
+<sub><i>Auto-complete support for `#anchor` markers.</i></sub>
+
+<img width="1431" height="578" alt="image" src="https://github.com/user-attachments/assets/af3c76bc-49e3-42dd-8660-5978c3cd8908" /><br>
+<sub><i>Navigate between anchors quickly using the sidebar and quick picker.</i></sub>
+
+
+
