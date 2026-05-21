@@ -1,3 +1,13 @@
+<p align="center">
+  <img src="https://github.com/samenekochan/hash-anchor/blob/main/resources/AHash.png?raw=true" width="128">
+</p>
+
+<p align="center">
+  lightweight current-file anchor navigator
+</p>
+
+---
+
 # Hash Anchor
 
 Lightweight current-file anchor navigator for VS Code.
