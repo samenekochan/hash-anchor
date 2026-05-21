@@ -10,6 +10,12 @@
 
 # Hash Anchor
 
+![TypeScript](https://img.shields.io/badge/TypeScript-100%25-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Version](https://img.shields.io/github/package-json/v/samenekochan/hash-anchor?style=flat-square)
+![Release](https://img.shields.io/github/v/release/samenekochan/hash-anchor?style=flat-square)
+![License](https://img.shields.io/github/license/samenekochan/hash-anchor?style=flat-square)
+![Downloads](https://img.shields.io/github/downloads/samenekochan/hash-anchor/total?style=flat-square)
+
 Lightweight current-file anchor navigator for VS Code.
 
 Hash Anchor only scans the file currently opened in the active editor.
@@ -24,7 +30,7 @@ The extension only reads:
 
 ```ts
 vscode.window.activeTextEditor.document
-````
+```
 
 ---
 
