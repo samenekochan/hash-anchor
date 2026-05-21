@@ -96,7 +96,8 @@ function createAnchorDecorationType(): vscode.TextEditorDecorationType {
       color: 'rgba(127, 127, 127, 0.35)',
       fontWeight: '700',
       fontStyle: 'normal',
-      textDecoration: 'none; font-size: 1.4em'
+      // textDecoration: 'none; font-size: 1.4em'
+      textDecoration: 'none; letter-spacing: 0.04em;'
     }
   });
 }
@@ -413,7 +414,7 @@ class AnchorProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
   }
 }
 
-//#anchor
+//#anchor Finder
 
 function findAnchors(document: vscode.TextDocument): Anchor[] {
   const fileName = document.fileName.split(/[\\/]/).pop() ?? document.fileName;
