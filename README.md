@@ -225,7 +225,7 @@ Limits how many non-whitespace characters are allowed before `#anchor` in patter
 Range:
 
 ```txt
-1 - 32
+1 - 16
 ```
 
 ---
